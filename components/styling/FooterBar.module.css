@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    background-color: #1B1C1D;
+    color: white;
+    padding: 10px 10% 10px 10%;
+}
+
+.override {
+    color: white;
+}
