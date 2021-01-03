@@ -19,5 +19,5 @@
     "target": "esnext"
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "next.config.js", "apis/WaniKani.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "next.config.js"]
 }

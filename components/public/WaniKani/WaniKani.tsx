@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import axios, { AxiosInstance } from 'axios';
 import { Img } from 'react-optimized-image';
 
-import { WKProfile } from '../../../interfaces';
+import { WKProfile } from '../../../types';
 import Avatar from '../../../assets/avatar.png';
 
 import PublicShell from '../../common/PublicShell';

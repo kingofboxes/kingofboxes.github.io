@@ -1,20 +1,17 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
 import 'semantic-ui-css/semantic.min.css';
+
+import { ShellProps } from '../../types';
 
 import NavigationBar from './NavigationBar';
 import FooterBar from './FooterBar';
 
 import styles from '../styling/PublicShell.module.css';
 
-type Props = {
-  children?: ReactNode,
-  title?: string,
-};
-
 // Wrapper for all content.
-const PublicShell = ({ children, title = 'This is the default title' }: Props): JSX.Element => (
+const PublicShell = ({ children, title }: ShellProps): JSX.Element => (
   <div className={styles.container}>
     <Head>
       <title>{title}</title>
