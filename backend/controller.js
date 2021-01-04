@@ -13,6 +13,7 @@ const api = axios.create({
 
 // Export the different functions for router.
 const getWKStats = async (req, res) => {
+
   // Get WaniKani User object.
   const user = await api.get('/user');
   const userData = user.data;
