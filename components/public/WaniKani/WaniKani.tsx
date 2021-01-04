@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import axios, { AxiosInstance } from 'axios';
 import { Img } from 'react-optimized-image';
 
-import { WKProfile } from '../../../types';
+import { WKStats } from '../../../types';
 import Avatar from '../../../assets/avatar.png';
 
 import PublicShell from '../../common/PublicShell';
@@ -12,14 +12,10 @@ import styles from '../../styling/WaniKani.module.css';
 
 // Create Axios instance.
 const api: AxiosInstance = axios.create({
-  headers: {
-    'Wanikani-Revision': '20170710',
-    Authorization: 'Bearer ' + process.env.WK_API_TOKEN,
-  },
   baseURL: 'https://api.wanikani.com/v2/',
 });
 
-const WaniKani: NextPage<WKProfile> = (props) => {
+const WaniKani: NextPage<WKStats> = (props) => {
   const { username, level, profile, date_started, time_updated } = props;
   return (
     <PublicShell title="WaniKani Progression | kingofboxes's Website">

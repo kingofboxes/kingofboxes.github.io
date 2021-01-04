@@ -8,7 +8,7 @@ export type ShellProps = {
 };
 
 // For the WaniKani page.
-export type WKProfile = {
+export type WKStats = {
   username: string,
   level: number,
   profile: string,
