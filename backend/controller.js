@@ -11,12 +11,6 @@ const api = axios.create({
   baseURL: 'https://api.wanikani.com/v2/',
 });
 
-// Attempt to cache the WK stats (API calls takes ages).
-let cache = await getWKStats();
-setInterval(async () => {
-  cache = await getWKStats();
-}, 3600000);
-
 // Calculates WaniKani stats.
 const getWKStats = async () => {
   // Get WaniKani User object.
@@ -186,6 +180,12 @@ const getWKStats = async () => {
   };
   return stats;
 };
+
+// Attempt to cache the WK stats (API calls takes ages).
+let cache = await getWKStats();
+setInterval(async () => {
+  cache = await getWKStats();
+}, 3600000);
 
 // Router functions.
 const sendWKStats = async (req, res) => {
