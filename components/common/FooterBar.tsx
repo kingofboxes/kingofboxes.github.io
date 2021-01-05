@@ -8,6 +8,9 @@ const FooterBar = (): JSX.Element => (
     <Link href="https://github.com/kingofboxes">
       <a className={styles.override}>GitHub</a>
     </Link>
+    <Link href="https://au.linkedin.com/in/justin-liang3">
+      <a className={styles.override}>LinkedIn</a>
+    </Link>
   </div>
 );
 

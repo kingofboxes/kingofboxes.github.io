@@ -31,6 +31,7 @@ var credentials = {
   cert: cert,
 };
 
+// Uses certificate files for HTTPS.
 var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(4000, () => {
   console.log('Express is listening on port 4000.');

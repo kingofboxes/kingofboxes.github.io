@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 require('dotenv').config();
 const axios = require('axios');
 
@@ -182,10 +183,12 @@ const getWKStats = async () => {
 };
 
 // Attempt to cache the WK stats (API calls takes ages).
-let cache = await getWKStats();
-setInterval(async () => {
+let cache;
+const refreshCache = async () => {
   cache = await getWKStats();
-}, 3600000);
+};
+refreshCache();
+setInterval(refreshCache, 3600000);
 
 // Router functions.
 const sendWKStats = async (req, res) => {

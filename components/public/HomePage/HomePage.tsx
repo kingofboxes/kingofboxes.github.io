@@ -9,7 +9,7 @@ import styles from '../../styling/HomePage.module.css';
 
 const HomePage: NextPage = () => {
   return (
-    <PublicShell title="Home | kingofboxes's Website">
+    <PublicShell title="Home | Justin's Website">
       <div className={styles.container}>
         <h1>Welcome to my website!</h1>
         <div className={styles.image}>

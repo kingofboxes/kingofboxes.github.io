@@ -15,6 +15,7 @@ const PublicShell = ({ children, title }: ShellProps): JSX.Element => (
   <div className={styles.container}>
     <Head>
       <title>{title}</title>
+      <link rel="shortcut icon" href="/favicon.ico" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>

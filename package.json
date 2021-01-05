@@ -39,5 +39,10 @@
     "rimraf": "^3.0.0",
     "typescript": "^4.1.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn type-check && yarn lint && yarn deploy"
+    }
+  },
   "license": "MIT"
 }

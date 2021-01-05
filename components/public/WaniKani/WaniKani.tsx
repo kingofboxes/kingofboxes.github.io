@@ -17,7 +17,7 @@ const api: AxiosInstance = axios.create({
 
 const WaniKani: NextPage<WKProfile> = (data: WKProfile) => {
   return (
-    <PublicShell title="WaniKani Progression | kingofboxes's Website">
+    <PublicShell title="WaniKani Progression | Justin's Website">
       <div className={styles.container}>
         <div className={styles.wkcontainer}>
           <h1>WaniKani</h1>
