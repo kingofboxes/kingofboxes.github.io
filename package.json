@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "dotenv": "^8.2.0",
-    "dotenv-webpack": "^6.0.0",
     "husky": "^4.3.6",
     "next": "^10.0.3",
     "next-optimized-images": "^3.0.0-canary.10",

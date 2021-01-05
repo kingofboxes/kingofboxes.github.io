@@ -15,7 +15,7 @@ const HomePage: NextPage = () => {
         <div className={styles.image}>
           <Svg src={Maimai} />
         </div>
-        <h2>I have no idea what to put here...</h2>
+        <h2>This is an ongoing work-in-progress, but enjoy your stay! :)</h2>
       </div>
     </PublicShell>
   );
