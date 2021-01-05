@@ -24,15 +24,14 @@ app.get('/favicon.ico', function (req, res) {
 app.use('/', router);
 
 // Start Express.
-
 var key = fs.readFileSync(__dirname + '/certsFiles/privkey.pem');
 var cert = fs.readFileSync(__dirname + '/certsFiles/fullchain.pem');
 var credentials = {
   key: key,
-  cert: cert
+  cert: cert,
 };
 
 var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(4000, () => {
-  console.log("Express is listening on port 4000.")
+  console.log('Express is listening on port 4000.');
 });

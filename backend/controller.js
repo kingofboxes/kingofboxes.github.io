@@ -11,8 +11,16 @@ const api = axios.create({
   baseURL: 'https://api.wanikani.com/v2/',
 });
 
+// Bad attempt at caching content.
+let dummy = 1;
+setInterval(() => {
+  dummy += 1;
+}, 5000);
+
 // Export the different functions for router.
 const getWKStats = async (req, res) => {
+  console.log(dummy);
+
   // Get WaniKani User object.
   const user = await api.get('/user');
   const userData = user.data;
