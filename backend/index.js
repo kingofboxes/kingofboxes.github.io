@@ -5,6 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const router = require('./router');
+const https = require('https');
+const fs = require('fs');
 
 // Create Express instance and adds cors / body-parser functionality.
 const app = express();
@@ -22,4 +24,15 @@ app.get('/favicon.ico', function (req, res) {
 app.use('/', router);
 
 // Start Express.
-app.listen(4000, () => console.log('Express is now running on port 4000.'));
+
+var key = fs.readFileSync(__dirname + '/certsFiles/privkey.pem');
+var cert = fs.readFileSync(__dirname + '/certsFiles/fullchain.pem');
+var credentials = {
+  key: key,
+  cert: cert
+};
+
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(4000, () => {
+  console.log("Express is listening on port 4000.")
+});
