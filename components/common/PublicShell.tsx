@@ -4,7 +4,6 @@ import Head from 'next/head';
 import 'semantic-ui-css/semantic.min.css';
 
 import { ShellProps } from '../../types';
-
 import NavigationBar from './NavigationBar';
 import FooterBar from './FooterBar';
 
@@ -15,9 +14,9 @@ const PublicShell = ({ children, title }: ShellProps): JSX.Element => (
   <div className={styles.container}>
     <Head>
       <title>{title}</title>
-      <link rel="shortcut icon" href="/favicon.ico" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?" />
     </Head>
     <header>
       <nav>

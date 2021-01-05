@@ -26,3 +26,7 @@
 .override:hover {
     color: #1E70BF;
 }
+
+.clickable:hover {
+    cursor: pointer;
+}

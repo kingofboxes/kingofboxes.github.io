@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Button, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
+import { Img } from 'react-optimized-image';
+import Logo from '../../assets/logo.png';
 
 import styles from '../styling/NavigationBar.module.css';
 
@@ -13,7 +15,7 @@ const url = (tab: string) => {
 const NavigationBar = (): JSX.Element => (
   <div className={styles.container}>
     <Link href="/" as={process.env.BACKEND_URL + '/'}>
-      <Button>Placeholder Logo</Button>
+      <Img src={Logo} sizes={[140]} className={styles.clickable} />
     </Link>
     <div className={styles.navbar}>
       {tabs.map((tab) => {
