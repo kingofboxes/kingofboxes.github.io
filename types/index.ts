@@ -1,5 +1,5 @@
 // Types
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 // For the public shell.
 export type ShellProps = {

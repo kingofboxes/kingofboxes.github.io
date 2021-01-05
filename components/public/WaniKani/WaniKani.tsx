@@ -12,7 +12,7 @@ import styles from '../../styling/WaniKani.module.css';
 
 // Create Axios instance.
 const api: AxiosInstance = axios.create({
-  baseURL: 'http://kingofboxes.mxblue.net.au:4000/',
+  baseURL: 'https://kingofboxes.mxblue.net.au:4000/',
 });
 
 const WaniKani: NextPage<WKProfile> = (data: WKProfile) => {
