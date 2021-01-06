@@ -23,7 +23,9 @@ const PublicShell: React.FC<ShellProps> = ({ children, title }) => (
       </nav>
     </header>
     <main>
-      <div className={styles.body}>{children}</div>
+      <div className={styles.body}>
+        <div className={styles.content}>{children}</div>
+      </div>
     </main>
     <footer>
       <FooterBar />

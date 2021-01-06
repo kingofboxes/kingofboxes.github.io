@@ -3,14 +3,11 @@ import { NextPage } from 'next';
 
 import PublicShell from '../../common/PublicShell';
 
-import styles from '../../styling/About.module.css';
-
 const About: NextPage = () => {
   return (
     <PublicShell title="About This Website | Justin's Website">
-      <div className={styles.container}>
-        <h1>Information about this website goes here.</h1>
-      </div>
+      <h1>About This Website</h1>
+      <p>This page is still under development, check back later!</p>
     </PublicShell>
   );
 };
