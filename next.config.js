@@ -13,7 +13,7 @@ module.exports = withOptimizedImages({
   },
 
   /* Next.js build settings */
-  assetPrefix: !debug ? '/website-project/' : '',
+  assetPrefix: !debug ? '.' : '',
 
   /* webpack */
   webpack: (config) => {
