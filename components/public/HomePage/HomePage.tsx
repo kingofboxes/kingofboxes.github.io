@@ -1,10 +1,9 @@
 import React from 'react';
 import { NextPage } from 'next';
+import { Svg } from 'react-optimized-image';
 
 import PublicShell from '../../common/PublicShell';
-import { Svg } from 'react-optimized-image';
 import Maimai from '../../../assets/maimai.svg';
-
 import styles from '../../styling/HomePage.module.css';
 
 const HomePage: NextPage = () => {

@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 import styles from '../styling/FooterBar.module.css';
 
-const FooterBar = (): JSX.Element => (
+// Footer.
+const FooterBar: React.FC = () => (
   <div className={styles.container}>
     <Link href="https://github.com/kingofboxes">
       <a className={styles.override}>GitHub</a>

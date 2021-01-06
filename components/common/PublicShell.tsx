@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-
 import 'semantic-ui-css/semantic.min.css';
 
 import { ShellProps } from '../../types';
@@ -10,7 +9,7 @@ import FooterBar from './FooterBar';
 import styles from '../styling/PublicShell.module.css';
 
 // Wrapper for all content.
-const PublicShell = ({ children, title }: ShellProps): JSX.Element => (
+const PublicShell: React.FC<ShellProps> = ({ children, title }) => (
   <div className={styles.container}>
     <Head>
       <title>{title}</title>
@@ -23,7 +22,9 @@ const PublicShell = ({ children, title }: ShellProps): JSX.Element => (
         <NavigationBar />
       </nav>
     </header>
-    <div className={styles.body}>{children}</div>
+    <main>
+      <div className={styles.body}>{children}</div>
+    </main>
     <footer>
       <FooterBar />
     </footer>

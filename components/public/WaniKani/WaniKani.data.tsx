@@ -1,20 +1,23 @@
 import React from 'react';
-import { WKProfile } from '../../../types';
-import styles from '../../styling/WaniKani.module.css';
 import { Img } from 'react-optimized-image';
-import Avatar from '../../../assets/avatar.png';
-
 import { Table } from 'semantic-ui-react';
 
+import { WKProfile } from '../../../types';
+import Avatar from '../../../assets/avatar.png';
+
+import styles from '../../styling/WaniKani.module.css';
+
+// Interface for page.
 interface WKProfileInterface {
   data: WKProfile;
 }
 
+// Profile header.
 export const WaniKaniProfile: React.FC<WKProfileInterface> = ({ data }) => {
   return (
     <div className={styles.profile}>
       <div className={styles.avatar}>
-        <Img src={Avatar} sizes={[128]} />
+        <Img src={Avatar} sizes={[128]} alt="kingofboxes-avatar" />
       </div>
       <div className={styles.wrapper}>
         <div className={styles.progress}>
@@ -34,6 +37,7 @@ export const WaniKaniProfile: React.FC<WKProfileInterface> = ({ data }) => {
   );
 };
 
+// Review table.
 export const WaniKaniReviews: React.FC<WKProfileInterface> = ({ data }) => {
   return (
     <>
@@ -78,6 +82,7 @@ export const WaniKaniReviews: React.FC<WKProfileInterface> = ({ data }) => {
   );
 };
 
+// Accuracy table.
 export const WaniKaniAccuracy: React.FC<WKProfileInterface> = ({ data }) => {
   return (
     <>

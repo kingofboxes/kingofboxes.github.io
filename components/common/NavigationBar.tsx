@@ -1,26 +1,31 @@
 import React from 'react';
 import Link from 'next/link';
-
-import { Header } from 'semantic-ui-react';
+import { Header, Dropdown, Icon } from 'semantic-ui-react';
 import { Img } from 'react-optimized-image';
+
 import Logo from '../../assets/logo.png';
 
 import styles from '../styling/NavigationBar.module.css';
 
-const tabs: string[] = ['WaniKani', 'Portfolio'];
+// Helper function to create tabs.
+const tabs: string[] = ['WaniKani', 'Maimai', 'Portfolio', 'About'];
 const url = (tab: string) => {
   return `/${tab.toLowerCase().replace(/\s/g, '')}`;
 };
 
-const NavigationBar = (): JSX.Element => (
+// Menu icon.
+const menu = <Icon name="bars" inverted size="large" />;
+
+// Navbar.
+const NavigationBar: React.FC = () => (
   <div className={styles.container}>
-    <Link href="/" as={process.env.BACKEND_URL + '/'}>
-      <Img src={Logo} sizes={[140]} className={styles.clickable} />
+    <Link href="/">
+      <Img src={Logo} sizes={[140]} className={styles.clickable} alt="nya-logo" />
     </Link>
     <div className={styles.navbar}>
       {tabs.map((tab) => {
         return (
-          <Link href={url(tab)} as={process.env.BACKEND_URL + url(tab)} key={tab}>
+          <Link href={url(tab)} key={tab}>
             <a className={styles.navitem}>
               <Header as="h3">
                 <span className={styles.override}>{tab}</span>
@@ -29,6 +34,19 @@ const NavigationBar = (): JSX.Element => (
           </Link>
         );
       })}
+    </div>
+    <div className={styles.mininavbar}>
+      <Dropdown trigger={menu} icon={null}>
+        <Dropdown.Menu>
+          {tabs.map((tab) => {
+            return (
+              <Link href={url(tab)} key={tab}>
+                <Dropdown.Item text={tab} key={tab} />
+              </Link>
+            );
+          })}
+        </Dropdown.Menu>
+      </Dropdown>
     </div>
   </div>
 );

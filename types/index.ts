@@ -7,15 +7,7 @@ export type ShellProps = {
   title?: string,
 };
 
-// For the WaniKani page.
-export type WKStats = {
-  username: string,
-  level: number,
-  profile: string,
-  date_started: string,
-  time_updated: string,
-};
-
+// For WaniKani:
 export type WKUser = {
   username: string,
   level: number,
@@ -24,6 +16,7 @@ export type WKUser = {
   time_updated: string,
 };
 
+// Reviews.
 type WKReview = {
   total_readings: number,
   total_meanings: number,
@@ -36,12 +29,14 @@ type WKReview = {
   incorrect_reviews: number,
 };
 
+// Accuracy per subject.
 type WKAccuracySubject = {
   readings: number,
   meanings: number,
   total: number,
 };
 
+// Accuracy overall.
 type WKAccuracy = {
   readings: number,
   meanings: number,
@@ -51,13 +46,14 @@ type WKAccuracy = {
   vocabulary: WKAccuracySubject,
 };
 
+// Items.
 type WKItems = {
   radical: number,
   kanji: number,
   vocabulary: number,
 };
 
-// For the WaniKani page.
+// Export the collection of types.
 export type WKProfile = {
   user: WKUser,
   items: WKItems,

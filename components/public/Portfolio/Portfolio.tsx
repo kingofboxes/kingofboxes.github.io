@@ -5,7 +5,7 @@ import PublicShell from '../../common/PublicShell';
 
 import styles from '../../styling/Portfolio.module.css';
 
-const HomePage: NextPage = () => {
+const Portfolio: NextPage = () => {
   return (
     <PublicShell title="Portfolio | Justin's Website">
       <div className={styles.container}>
@@ -15,4 +15,4 @@ const HomePage: NextPage = () => {
   );
 };
 
-export default HomePage;
+export default Portfolio;
