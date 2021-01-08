@@ -2,7 +2,7 @@ import React from 'react';
 
 import { List } from 'semantic-ui-react';
 
-// Profile header.
+// Tools & Libraries
 export const AboutToolsLibraries: React.FC = () => {
   return (
     <>
@@ -76,6 +76,7 @@ export const AboutToolsLibraries: React.FC = () => {
   );
 };
 
+// Deployment
 export const AboutDeployment: React.FC = () => {
   return (
     <>
@@ -87,7 +88,7 @@ export const AboutDeployment: React.FC = () => {
             <List.Header as="p">GitHub Pages</List.Header>
             <List.Description>
               This website is deployed for free on GitHub Pages under my own GitHub user account
-              using the 'gh-pages' package.
+              using the &apos;gh-pages&apos; package.
             </List.Description>
           </List.Content>
         </List.Item>

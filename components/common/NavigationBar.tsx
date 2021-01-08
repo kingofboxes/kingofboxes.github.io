@@ -14,7 +14,7 @@ const url = (tab: string) => {
 };
 
 // Menu icon.
-const menu = <Icon name="bars" inverted size="large" />;
+const menu: JSX.Element = <Icon name="bars" inverted size="large" />;
 
 // Navbar.
 const NavigationBar: React.FC = () => (

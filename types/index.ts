@@ -7,6 +7,12 @@ export type ShellProps = {
   title?: string,
 };
 
+// For content headers.
+export type ContentProps = {
+  heading?: string,
+  description?: string,
+};
+
 // For WaniKani:
 export type WKUser = {
   username: string,

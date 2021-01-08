@@ -1,17 +1,21 @@
 import React from 'react';
 import { NextPage } from 'next';
 
+import ContentHeader from '../../common/ContentHeader';
 import { AboutToolsLibraries, AboutDeployment } from './About.data';
 import PublicShell from '../../common/PublicShell';
+import { ContentProps } from '../../../types';
+
+const contentProps: ContentProps = {
+  heading: 'About This Website',
+  description: `This page documents the most important aspects about this website, such as the tools and
+  libraries used to make this website, and where and how it is deployed.`,
+};
 
 const About: NextPage = () => {
   return (
     <PublicShell title="About This Website | Justin's Website">
-      <h1>About This Website</h1>
-      <span>
-        This page documents the most important aspects about this website, such as the tools and
-        libraries used to make this website, and where and how it is deployed.
-      </span>
+      <ContentHeader data={contentProps} />
       <AboutToolsLibraries />
       <AboutDeployment />
     </PublicShell>

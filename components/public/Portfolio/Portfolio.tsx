@@ -1,13 +1,19 @@
 import React from 'react';
 import { NextPage } from 'next';
 
+import ContentHeader from '../../common/ContentHeader';
 import PublicShell from '../../common/PublicShell';
+import { ContentProps } from '../../../types';
+
+const contentProps: ContentProps = {
+  heading: 'Portfolio',
+  description: 'This page is still under development, check back later!',
+};
 
 const Portfolio: NextPage = () => {
   return (
     <PublicShell title="Portfolio | Justin's Website">
-      <h1>Portfolio</h1>
-      <p>This page is still under development, check back later!</p>
+      <ContentHeader data={contentProps} />
     </PublicShell>
   );
 };
