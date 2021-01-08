@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Header, Dropdown, Icon } from 'semantic-ui-react';
 import { Img } from 'react-optimized-image';
 
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/nyalogo3.png';
 
 import styles from '../styling/NavigationBar.module.css';
 
