@@ -9,7 +9,7 @@ import styles from '../styling/NavigationBar.module.css';
 
 // Helper function to create tabs.
 const tabs: string[] = ['WaniKani', 'Maimai', 'Portfolio', 'About'];
-const url = (tab: string) => {
+const url = (tab: string): string => {
   return `/${tab.toLowerCase().replace(/\s/g, '')}`;
 };
 

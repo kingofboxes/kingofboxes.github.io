@@ -16,9 +16,13 @@ interface WKProfileInterface {
 export const WaniKaniProfile: React.FC<WKProfileInterface> = ({ data }) => {
   return (
     <div className={styles.profile}>
-      <div className={styles.avatar}>
-        <Img src={Avatar} sizes={[128]} alt="kingofboxes-avatar" />
-      </div>
+      <Img
+        src={Avatar}
+        sizes={[48, 96]}
+        alt="kingofboxes-avatar"
+        className={styles.avatar}
+        breakpoints={[750]}
+      />
       <div className={styles.wrapper}>
         <div className={styles.progress}>
           <a href={data.user.profile}>{data.user.username}</a>
