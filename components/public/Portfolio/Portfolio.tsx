@@ -15,7 +15,7 @@ import {
 const contentProps: ContentProps = {
   heading: 'Portfolio',
   description: `Hello world! I'm Justin, a software developer looking for a graduate/junior role in the midst of all this chaos involving: 
-                COVID-19, an economical crisis, and insane competition for literally any job in this field. 
+                COVID-19, an economic crisis, and insane competition for literally any job in this field. 
                 This section of the website will try to summarise the projects I've been involved in to give the 
                 reader (you) a sense of how much experience I have.`,
 };

@@ -1,5 +1,5 @@
 // next-optimized-images settings.
 module.exports = {
-  default: { webp: true },
+  default: { webp: false },
   types: { thumbnail: { sizes: [200, 400], breakpoints: [800], webp: false } },
 };

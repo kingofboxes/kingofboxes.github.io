@@ -95,8 +95,9 @@ export const PortfolioPersonalProjects: React.FC = () => {
               <a href="https://github.com/kingofboxes/kobot-discord">Kobot Discord Bot</a>
             </List.Header>
             <List.Description>
-              My first Discord bot. Contains many different features for my own private use. Written
-              in Python.
+              My first Discord bot. Contains many different features (such as dice rolling,
+              searching a dictionary for the definition of a word, etc.) for my own private use.
+              Written in Python.
             </List.Description>
           </List.Content>
         </List.Item>
