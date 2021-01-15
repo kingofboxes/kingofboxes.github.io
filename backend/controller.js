@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 require('dotenv').config();
+const fs = require('fs');
 const axios = require('axios');
 
 // Create Axios instance.
@@ -183,18 +184,33 @@ const getWKStats = async () => {
 };
 
 // Attempt to cache the WK stats (API calls takes ages).
-let cache;
-const refreshCache = async () => {
-  cache = await getWKStats();
+let wkCache;
+const refreshWKCache = async () => {
+  wkCache = await getWKStats();
 };
-refreshCache();
-setInterval(refreshCache, 3600000);
+refreshWKCache();
+setInterval(refreshWKCache, 3600000);
 
 // Router functions.
 const sendWKStats = async (req, res) => {
-  res.send(cache);
+  res.send(wkCache);
+};
+
+// Attempt to cache the MM stats.
+let mmCache;
+const refreshMMCache = () => {
+  const data = fs.readFileSync('./data/kingofboxes_overview.json');
+  mmCache = JSON.parse(data);
+  console.log(mmCache);
+};
+refreshMMCache();
+setInterval(refreshMMCache, 3600000);
+
+const sendMMStats = async (req, res) => {
+  res.send(mmCache);
 };
 
 module.exports = {
   sendWKStats,
+  sendMMStats,
 };
