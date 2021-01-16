@@ -10,7 +10,7 @@ export type ShellProps = Readonly<{
 // For content headers.
 export type ContentProps = Readonly<{
   heading?: string,
-  description?: string,
+  description?: string | string[],
 }>;
 
 // For WaniKani:
@@ -65,3 +65,36 @@ export type WKProfile = Readonly<{
   review: WKReview,
   accuracy: WKAccuracy,
 }>;
+
+type MMSongDetails = {
+  level: string,
+  rank: null | string,
+  score: null | number,
+};
+
+export type MMSongData = {
+  BASIC: MMSongDetails,
+  ADVANCED: MMSongDetails,
+  EXPERT: MMSongDetails,
+  MASTER: MMSongDetails,
+  REMASTER: MMSongDetails,
+};
+
+export type MMSongRecord = {
+  id: number,
+  song: string,
+  artist: string,
+  genre: string,
+  version: string,
+  cover: string,
+  data: MMSongData,
+};
+
+export type MMPlayerData = {
+  avatar: string,
+  name: string,
+  rating: number,
+  play_count: number,
+  last_played: string,
+  record: MMSongRecord[],
+};

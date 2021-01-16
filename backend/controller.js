@@ -201,7 +201,6 @@ let mmCache;
 const refreshMMCache = () => {
   const data = fs.readFileSync('./data/kingofboxes_overview.json');
   mmCache = JSON.parse(data);
-  console.log(mmCache);
 };
 refreshMMCache();
 setInterval(refreshMMCache, 3600000);

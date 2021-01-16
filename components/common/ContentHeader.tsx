@@ -11,7 +11,11 @@ interface ContentInterface {
 const ContentHeader: React.FC<ContentInterface> = ({ data }) => (
   <>
     <h1>{data.heading}</h1>
-    <span>{data.description}</span>
+    {typeof data.description === 'string' && <span>{data.description}</span>}
+    {typeof data.description === 'object' &&
+      data.description.map((paragraph, idx) => {
+        return <p key={idx}>{paragraph}</p>;
+      })}
   </>
 );
 
