@@ -1,11 +1,12 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { NextPage } from 'next';
 import axios, { AxiosInstance } from 'axios';
 
 import ContentHeader from '../../common/ContentHeader';
 import PublicShell from '../../common/PublicShell';
-import { MMPlayerData, ContentProps } from '../../../types';
-import { MaimaiSongComponent } from './Maimai.data';
+import { MMPlayerData, MMSongRecord, ContentProps } from '../../../types';
+import { MaimaiSongComponent, MaimaiSongLoader } from './Maimai.data';
 
 // Create Axios instance.
 const api: AxiosInstance = axios.create({
@@ -30,13 +31,47 @@ const contentProps: ContentProps = {
 };
 
 const MaimaiDX: NextPage<MMPlayerData> = (data) => {
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [results, setResults] = React.useState<number>(5);
+
+  // UseEffect hook for infinite scroll.
+  React.useEffect(() => {
+    // Function to check whether the scroll bar is at the bottom.
+    // If it is at the bottom, create a "loading" menu and display 10 more results after 0.5s.
+    const checkScroll = () => {
+      const height = document.body.scrollHeight;
+      const curr = window.scrollY + window.innerHeight;
+      if (curr >= height) {
+        if (results < data.record.length) {
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+            setResults(results + 10);
+          }, 500);
+        }
+      }
+    };
+
+    // Add event listener when mounting component.
+    window.addEventListener('scroll', checkScroll);
+
+    // Remove event listener when unmounting component.
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+    };
+  }, [results]);
+
   return (
     <PublicShell title="Maimai DX Song List | Justin's Website">
       <ContentHeader data={contentProps} />
       <h2>Song List</h2>
-      {data.record.map((song) => {
-        return <MaimaiSongComponent song={song} key={song.id} />;
-      })}
+      {data.record &&
+        data.record.map((song: MMSongRecord, idx: number) => {
+          if (idx < results) {
+            return <MaimaiSongComponent song={song} key={song.id} />;
+          }
+        })}
+      {loading && <MaimaiSongLoader />}
     </PublicShell>
   );
 };

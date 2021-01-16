@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 import { MMSongRecord, MMSongData } from '../../../types';
 
@@ -50,6 +51,20 @@ export const MaimaiSongComponent: React.FC<MMSongRecordInterface> = ({ song }) =
   );
 };
 
+export const MaimaiSongLoader: React.FC = () => {
+  return (
+    <Segment>
+      <Dimmer active>
+        <Loader size='big'>Loading</Loader>
+      </Dimmer>
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>
+  )
+}
+
 module.exports = {
   MaimaiSongComponent,
+  MaimaiSongLoader,
 };
