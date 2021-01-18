@@ -69,7 +69,7 @@ export type WKProfile = Readonly<{
 type MMSongDetails = {
   level: string,
   rank: null | string,
-  score: null | number,
+  score: number,
 };
 
 export type MMSongData = {

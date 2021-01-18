@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Segment, Popup } from 'semantic-ui-react'
 
 import { MMSongRecord, MMSongData } from '../../../types';
 
@@ -39,11 +39,23 @@ export const MaimaiSongComponent: React.FC<MMSongRecordInterface> = ({ song }) =
         </div>
         <div className={styles.difficulty}>
           {Object.keys(song.data).map((diff: string) => {
+            const content: string = song.data[diff as keyof MMSongData].score ? 
+              `PB: ${song.data[diff as keyof MMSongData].score.toFixed(4)}% (${song.data[diff as keyof MMSongData].rank})` : '';
+            if (content) {
               return (
-                <div key={`${song.id}-${diff}`} className={styles[diff]}>
-                  {song.data[diff as keyof MMSongData] && song.data[diff as keyof MMSongData].level}
-                </div>
+                <Popup key={`${song.id}-${diff}`} content={content} trigger={
+                  <div className={styles[diff]}>
+                    {song.data[diff as keyof MMSongData] && song.data[diff as keyof MMSongData].level}
+                  </div>
+                }/>
               );
+            } else {
+              return (
+                  <div className={styles[diff]}>
+                    {song.data[diff as keyof MMSongData] && song.data[diff as keyof MMSongData].level}
+                  </div>
+              );
+            }
           })}
         </div>
       </div>

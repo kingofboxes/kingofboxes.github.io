@@ -41,15 +41,15 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
   const [results, setResults] = React.useState<number>(5);
   const [list, setList] = React.useState<MMSongRecord[]>(data.record);
   const [query, setQuery] = React.useState<Record<string, string>>(defaultOptions);
-  const genreList = getGenres(data.record);
-  const levelsList = getLevels(data.record);
-  const difficultiesList = getDifficulties();
+  const genreList: Record<string, string>[] = getGenres(data.record);
+  const levelsList: Record<string, string>[] = getLevels(data.record);
+  const difficultiesList: Record<string, string>[] = getDifficulties();
 
   // UseEffect hook for infinite scroll.
   React.useEffect(() => {
     const checkScroll = () => {
-      const height = document.body.scrollHeight;
-      const curr = window.scrollY + window.innerHeight;
+      const height: number = document.body.scrollHeight;
+      const curr: number = window.scrollY + window.innerHeight;
       if (curr >= height) {
         if (list && results < list.length) {
           setLoading(true);
@@ -68,12 +68,12 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
 
   // Handle filtering by name, artist, genre and level.
   const setName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const options = {...query, name: event.target.value}
+    const options: Record<string, string> = {...query, name: event.target.value}
     filter(options)
   }
 
   const setArtist = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const options = {...query, artist: event.target.value}
+    const options: Record<string, string> = {...query, artist: event.target.value}
     filter(options)
   }
 
@@ -97,7 +97,7 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
 
   const checkLevel = (list: MMSongRecord[], level: string) => {
     // Take care of meta character for regex.
-    const levelPattern = level.replace('+', `\\+`);
+    const levelPattern: string = level.replace('+', `\\+`);
     let newList: MMSongRecord[] = [];
     const pattern = new RegExp(`^${levelPattern}$`, 'i');
     list.forEach((song: MMSongRecord) => {
