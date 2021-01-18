@@ -8,7 +8,7 @@ import ContentHeader from '../../common/ContentHeader';
 import PublicShell from '../../common/PublicShell';
 import { MMPlayerData, MMSongRecord, ContentProps, MMSongData } from '../../../types';
 import { MaimaiSongComponent, MaimaiSongLoader } from './Maimai.data';
-import { getGenres, getLevels, defaultOptions } from './Maimai.constants';
+import { getGenres, getLevels, getDifficulties, defaultOptions } from './Maimai.constants';
 
 import styles from '../../styling/Maimai.module.css';
 
@@ -43,6 +43,7 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
   const [query, setQuery] = React.useState<Record<string, string>>(defaultOptions);
   const genreList = getGenres(data.record);
   const levelsList = getLevels(data.record);
+  const difficultiesList = getDifficulties();
 
   // UseEffect hook for infinite scroll.
   React.useEffect(() => {
@@ -88,6 +89,12 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
     filter(options)
   }
 
+  const setDifficulty = (_event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
+    const difficulty = String(data.value);
+    const options: Record<string, string> = {...query, difficulty: difficulty};
+    filter(options)
+  }
+
   const checkLevel = (list: MMSongRecord[], level: string) => {
     // Take care of meta character for regex.
     const levelPattern = level.replace('+', `\\+`);
@@ -106,18 +113,34 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
     return newList;
   }
 
+  const checkLevelDifficulty = (list: MMSongRecord[], level: string, difficulty: string) => {
+    // Take care of meta character for regex.
+    const levelPattern = level.replace('+', `\\+`);
+    let newList: MMSongRecord[] = [];
+    const pattern = new RegExp(`^${levelPattern}$`, 'i');
+    list.forEach((song: MMSongRecord) => {
+      if (song.data[difficulty as keyof MMSongData] && pattern.test(song.data[difficulty as keyof MMSongData].level)) {
+        newList.push(song);
+      }
+    })
+
+    // Filter out duplicate songs with same levels for multiple difficulties.
+    newList = newList.filter((song, idx) => newList.indexOf(song) === idx);
+    return newList;
+  }
+
   const filter = (options: Record<string, string>) => {
 
     let pattern: RegExp;
     let newList = data.record;
 
     if (options.name !== '') {
-      pattern = new RegExp(options.name, 'i');
+      pattern = new RegExp(`^${options.name}`, 'i');
       newList = newList.filter((song) => pattern.test(song.song));
     }
 
     if (options.artist !== '') {
-      pattern = new RegExp(options.artist, 'i');
+      pattern = new RegExp(`^${options.artist}`, 'i');
       newList = newList.filter((song) => pattern.test(song.artist));
     }
 
@@ -128,6 +151,10 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
 
     if (options.level !== '') {
       newList = checkLevel(newList, options.level);
+    }
+
+    if (options.level !== '' && options.difficulty !== '') {
+      newList = checkLevelDifficulty(newList, options.level, options.difficulty);
     }
 
     setList(newList);
@@ -141,10 +168,13 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
       <div className={styles.search}>
         <Form inverted>
           <Form.Group widths='equal'>
-            <Form.Input fluid label='Song Name:' placeholder='Search by song name...' value={query.name} onChange={setName} />
-            <Form.Input fluid label='Artist:' placeholder='Search by artist...' value={query.artist} onChange={setArtist}/>
-            <Form.Dropdown fluid label='Genre:' selection placeholder='Filter by genre...' options={genreList} onChange={setGenre} />
-            <Form.Dropdown fluid label='Level:' selection placeholder='Filter by level...' options={levelsList} onChange={setLevel} />
+            <Form.Input clearable fluid label='Song Name:' placeholder='Search by song name...' value={query.name} onChange={setName} />
+            <Form.Input clearable fluid label='Artist:' placeholder='Search by artist...' value={query.artist} onChange={setArtist}/>
+            <Form.Dropdown clearable fluid label='Genre:' selection placeholder='Filter by genre...' options={genreList} onChange={setGenre} />
+          </Form.Group>
+          <Form.Group widths='equal'>
+            <Form.Dropdown clearable fluid label='Difficulty:' selection placeholder='Filter by difficulty...' options={difficultiesList} onChange={setDifficulty} />
+            <Form.Dropdown clearable fluid label='Level:' selection placeholder='Filter by level...' options={levelsList} onChange={setLevel} />
           </Form.Group>
         </Form>
       </div>

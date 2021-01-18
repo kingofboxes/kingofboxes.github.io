@@ -59,10 +59,25 @@ export const getLevels = (list: MMSongRecord[]): Record<string, string>[] => {
   return levelsList;
 };
 
+// Get difficulties.
+export const getDifficulties = (): Record<string, string>[] => {
+  const difficultiesList: Record<string, string>[] = [];
+  const difficulties = ['BASIC', 'ADVANCED', 'EXPERT', 'MASTER', 'REMASTER'];
+  difficulties.map((level: string) => {
+    difficultiesList.push({
+      key: level,
+      text: level,
+      value: level,
+    });
+  });
+  return difficultiesList;
+}
+
 // Default options.
 export const defaultOptions: Record<string, string> = {
   name: '',
   artist: '',
   level: '',
   genre: '',
+  difficulty: '',
 };

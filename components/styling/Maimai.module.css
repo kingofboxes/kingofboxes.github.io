@@ -72,36 +72,27 @@
     border: 2px white solid;
     font-size: 1.2em;
     border-radius: 50%;
+    margin: 5px;
 }
 
 .BASIC {
     background-color: #6FD43D;
-    margin-left: 0px;
-    margin-right: 5px;
 }
 
 .ADVANCED {
     background-color: #F8B709;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .EXPERT {
     background-color: #FF818D;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .MASTER {
     background-color: #9F51DC;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .REMASTER {
     background-color: #E5AEF4;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .search {
@@ -144,29 +135,24 @@
 }
 
 @media only screen and (max-width: 550px) {
-    .version {
-        height: 1.125em;
-        width: auto;
-        max-width: 58.5px;
-    }
-    .version > img {
-        height: 100%;
-        width: 100%;
-    }
     .genre {
         font-size: 0.75em;
     }
     .songname {
         font-size: 0.9em;
     }
-}
-
-@media only screen and (max-width: 450px) {
     .album > img {
         width: 50px;
         height: 50px;
     }
-
+    .version {
+        height: 1em;
+        width: auto;
+        max-width: 52px;
+    }
+    .difficulty {
+        flex-flow: row wrap;
+    }
     .difficulty > div {
         width: 25px;
         height: 25px;
