@@ -115,7 +115,7 @@ const MaimaiDX: NextPage<MMPlayerData> = (data) => {
 
   const checkLevelDifficulty = (list: MMSongRecord[], level: string, difficulty: string) => {
     // Take care of meta character for regex.
-    const levelPattern = level.replace('+', `\\+`);
+    const levelPattern: string = level.replace('+', `\\+`);
     let newList: MMSongRecord[] = [];
     const pattern = new RegExp(`^${levelPattern}$`, 'i');
     list.forEach((song: MMSongRecord) => {
