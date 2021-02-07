@@ -25,16 +25,12 @@ if __name__ == "__main__":
     ------------------------------
     Player: {p['name']}
     Rating: {p['rating']}
-    Star Count: {p['star_count']}
     Play Count: {p['play_count']}
     Last Played: {p['last_played']}
     ------------------------------"""))
 
     # Get player record.
     r = c.getPlayerRecord()
-    
-    # Get player history.
-    h = c.getPlayerHistory()
 
     # Get image urls.
     i = c.getImageURLs()
@@ -60,7 +56,7 @@ if __name__ == "__main__":
     player['last_played'] = p['last_played']
     player['record'] = records
 
-    with open(f'{username}_overview.json', 'w+') as fp:
+    with open(f'../data/{username}_overview.json', 'w+') as fp:
         json.dump(player, fp, indent=3, ensure_ascii=False)
         print(f"Full export complete.")
 
