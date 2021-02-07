@@ -10,13 +10,12 @@ const api = axios.create({
     'Wanikani-Revision': '20170710',
     Authorization: 'Bearer ' + process.env.WK_API_TOKEN,
   },
-  baseURL: 'https://api.wanikani.com/v2/',
 });
 
 // Calculates WaniKani stats.
 const getWKStats = async () => {
   // Get WaniKani User object.
-  const user = await api.get('/user');
+  const user = await api.get('https://api.wanikani.com/v2/user');
   const userData = user.data;
 
   // Get dates in readable form.
@@ -34,8 +33,15 @@ const getWKStats = async () => {
     https://www.wkstats.com/js/calc_stats-1.0.6.js */
 
   // Get the total number of things learnt.
-  const assignment = await api.get('/assignments');
-  const assignmentData = assignment.data;
+  const aData = [];
+  let assignment = await api.get('https://api.wanikani.com/v2/assignments');
+
+  // WaniKani limits to 500 results per API call, so we have to do multiple fetches and merge into one array.
+  while (assignment.data.pages.next_url !== null) {
+    aData.push.apply(aData, assignment.data.data);
+    assignment = await api.get(assignment.data.pages.next_url);
+  }
+  aData.push.apply(aData, assignment.data.data);
 
   const items = {
     radical: 0,
@@ -43,13 +49,20 @@ const getWKStats = async () => {
     vocabulary: 0,
   };
 
-  assignmentData.data.forEach((a) => {
+  aData.forEach((a) => {
     items[a.data.subject_type] += 1;
   });
 
   // Get WaniKani Review stats.
-  const review = await api.get('/review_statistics');
-  const reviewData = review.data;
+  const rData = [];
+  let review = await api.get('https://api.wanikani.com/v2/review_statistics');
+
+  // WaniKani limits to 500 results per API call, so we have to do multiple fetches and merge into one array.
+  while (review.data.pages.next_url !== null) {
+    rData.push.apply(rData, review.data.data);
+    review = await api.get(review.data.pages.next_url);
+  }
+  rData.push.apply(rData, review.data.data);
 
   const review_counts = {
     total_readings: 0,
@@ -82,7 +95,7 @@ const getWKStats = async () => {
   };
 
   // Calculate correct/incorrect information.
-  reviewData.data.forEach((r) => {
+  rData.forEach((r) => {
     // Radicials don't have a "reading".
     if (r.data.subject_type === 'radical') {
       r.data.reading_correct = 0;
@@ -213,3 +226,4 @@ module.exports = {
   sendWKStats,
   sendMMStats,
 };
+
